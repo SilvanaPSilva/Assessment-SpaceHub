@@ -1,0 +1,83 @@
+@endpoint = http://localhost:3000/api/v1/hubs
+//@newHub = 6acf6fc202108ed6d39cdf1d
+@newHub = {{postAHub.response.body._id}}
+
+###
+# 1.POST request with correct data.
+# @name postAHub
+POST {{endpoint}} HTTP/1.1
+content-type: application/json
+x-api-key: blahblah
+
+{
+  "roomNumber": 1,
+  "capacity": "3-5"
+}
+
+###
+# 2.POST request which fails validation.
+# @name postFakeHub
+POST {{endpoint}} HTTP/1.1
+content-type: application/json
+x-api-key: blahblah
+
+{
+  "roomNumber": 11,
+  "capacity": "3-5"
+}
+
+### 
+# 3.GET request on the set of resources.
+GET {{endpoint}} HTTP/1.1
+
+###
+#4.	GET request on an individual resource with succeeds.
+GET {{endpoint}}/{{newHub}} HTTP/1.1
+
+###
+# 5.	GET request on an individual resource which fails.
+GET  {{endpoint}}/6acab644a37aacc98fa475c8 HTTP/1.1
+
+###
+#6.	DELETE request on an individual resource which succeeds.
+DELETE  {{endpoint}}/{{newHub}} HTTP/1.1
+
+###
+#7.	DELETE request on an individual resource which fails.
+DELETE  {{endpoint}}/{{newHub}} HTTP/1.1
+
+###
+#8.	PUT request on an individual resource which succeeds.
+PUT  {{endpoint}}/{{newHub}} HTTP/1.1
+content-type: application/json
+x-api-key: blahblah
+
+{
+  "roomNumber": 1,
+  "capacity": "6-10",
+  "equipment":["Cable", "Projector"]
+}
+
+###
+# 9.	PUT request on an individual resource which fails as the resource cannot be found.
+PUT  {{endpoint}}/6acf6fc202108ed6d39cdf1e HTTP/1.1
+content-type: application/json
+x-api-key: blahblah
+
+{
+  "roomNumber": 1,
+  "capacity": "6-10",
+  "equipment":["Cable", "Projector"]
+}
+
+###
+# 10.	PUT request on an individual resource which fails as the data is not valid.
+PUT  {{endpoint}}/{{newHub}} HTTP/1.1
+content-type: application/json
+x-api-key: blahblah
+
+{
+  "roomNumber": 1,
+  "capacity": "6-10",
+  "equipment":["laptop"]
+}
