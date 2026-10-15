@@ -48,8 +48,8 @@ const bookingSchema = new Schema<IBooking>(
  */
 export const createBookingsZSchema = z.object({
   hubId: z.string().regex(/^[0-9a-fA-F]{24}$/, 'Invalid hub ID'),
-  checkingDate: z.iso.date(),
-  checkoutDate: z.iso.date(),
+  checking: z.iso.date(),
+  checkout: z.iso.date(),
 });
 
 /**

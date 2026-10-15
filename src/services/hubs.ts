@@ -20,10 +20,7 @@ export class HubService {
   }
 
   async createHub(hubData: IHub): Promise<HydratedDocument<IHub>> {
-    const hub = new HubModel({
-      ...hubData,
-      price: prices[hubData.capacity]
-    });
+    const hub = new HubModel({ ...hubData, price: prices[hubData.capacity] });
     return await hub.save();
   }
 

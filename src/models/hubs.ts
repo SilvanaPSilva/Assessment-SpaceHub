@@ -3,21 +3,21 @@ import { z } from 'zod';
 
 //Interface for Hub
 export interface IHub {
-  roomNumber: number;
-  capacity: '1-2' | '3-5' | '6-10';
-  equipment?: ('Cable' | 'TV' | 'Projector')[];
-  price?: number;
+    roomNumber: number;
+    capacity: '1-2' | '3-5' | '6-10';
+    equipment?: ('Cable' | 'TV' | 'Projector')[];
+    price?: number;
 }
 
 //Schema Mongoose
 const hubSchema = new Schema<IHub>(
-  {
-    roomNumber: { type: Number, required: true, min: 1, max: 4 },
-    capacity: { type: String, required: true, enum: ['1-2', '3-5', '6-10', '10'] },
-    equipment: {type: [String], enum: ['Cable', 'TV', 'Projector'], default: []},
-    price: { type: Number, required: false, min: 0 },
-  },
-  { timestamps: true }
+    {
+        roomNumber: { type: Number, required: true, min: 1, max: 4 },
+        capacity: { type: String, required: true, enum: ['1-2', '3-5', '6-10', '10'] },
+        equipment: { type: [String], enum: ['Cable', 'TV', 'Projector'], default: [] },
+        price: { type: Number, required: false, min: 0 },
+    },
+    { timestamps: true }
 );
 
 /**
@@ -37,7 +37,7 @@ const hubSchema = new Schema<IHub>(
  *           example: 1
  *         capacity:
  *           type: string
- *           enum: [ "1-2", "3-5", "6-10", "10" ]
+ *           enum: [ "1-2", "3-5", "6-10"]
  *           example: "3-5"
  *         equipment:
  *           type: array
@@ -46,10 +46,10 @@ const hubSchema = new Schema<IHub>(
  *             enum: [ "Cable", "TV", "Projector" ]
  */
 export const createHubsZSchema = z.object({
-  roomNumber: z.number().int().min(1).max(4),
-  capacity: z.enum(['1-2', '3-5', '6-10', '10']),
-  equipment: z.array(z.enum(['Cable', 'TV', 'Projector'])).optional(),
-  //price: z.number().min(0).optional(),
+    roomNumber: z.number().int().min(1).max(4),
+    capacity: z.enum(['1-2', '3-5', '6-10', '10']),
+    equipment: z.array(z.enum(['Cable', 'TV', 'Projector'])).optional(),
+    //price: z.number().min(0).optional(),
 });
 
 /**
@@ -66,7 +66,7 @@ export const createHubsZSchema = z.object({
  *           example: 1
  *         capacity:
  *           type: string
- *           enum: [ "1-2", "3-5", "6-10", "10" ]
+ *           enum: [ "1-2", "3-5", "6-10"]
  *           example: "3-5"
  *         equipment:
  *           type: array
@@ -75,10 +75,10 @@ export const createHubsZSchema = z.object({
  *             enum: [ "Cable", "TV", "Projector" ]
  */
 export const updateHubsZSchema = z.object({
-  roomNumber: z.number().int().min(1).max(4).optional(),
-  capacity: z.enum(['1-2', '3-5', '6-10', '10']).optional(),
-  equipment: z.array(z.enum(['Cable', 'TV', 'Projector'])).optional(),
-  //price: z.number().min(0).optional(),
+    roomNumber: z.number().int().min(1).max(4).optional(),
+    capacity: z.enum(['1-2', '3-5', '6-10', '10']).optional(),
+    equipment: z.array(z.enum(['Cable', 'TV', 'Projector'])).optional(),
+    //price: z.number().min(0).optional(),
 });
 
 export const HubModel = model<IHub>('Hub', hubSchema);

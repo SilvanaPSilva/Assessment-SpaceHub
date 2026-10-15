@@ -44,7 +44,7 @@ DELETE  {{endpoint}}/{{newHub}} HTTP/1.1
 
 ###
 #7.	DELETE request on an individual resource which fails.
-DELETE  {{endpoint}}/{{newHub}} HTTP/1.1
+DELETE  {{endpoint}}/6acab644a37aacc98fa475c8 HTTP/1.1
 
 ###
 #8.	PUT request on an individual resource which succeeds.
