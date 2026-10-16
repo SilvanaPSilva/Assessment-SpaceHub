@@ -4,17 +4,16 @@ const options: swaggerJSDoc.Options = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'Hubs API',
+            title: 'Hubs and Bookings API',
             version: '1.0.0',
-            description: 'REST API for managing hubs'
+            description: 'REST API for managing hubs and bookings'
         },
         servers: [
             {
                 url: "/api/v1",
             },
         ],
-    },
-    //apis: ['./src/controllers/*.ts']
+    },    
     apis: ['./src/controllers/*.ts', './src/models/*.ts']
 };
 
