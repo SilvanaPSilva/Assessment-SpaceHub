@@ -1,5 +1,5 @@
-import { BookingModel, IBooking } from '../models/bookings';
 import { HydratedDocument } from 'mongoose';
+import { BookingModel, IBooking } from '../models/bookings';
 import { HubModel } from '../models/hubs'
 
 export class BookingService {

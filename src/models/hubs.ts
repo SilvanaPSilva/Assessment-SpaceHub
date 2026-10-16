@@ -48,8 +48,7 @@ const hubSchema = new Schema<IHub>(
 export const createHubsZSchema = z.object({
     roomNumber: z.number().int().min(1).max(4),
     capacity: z.enum(['1-2', '3-5', '6-10', '10']),
-    equipment: z.array(z.enum(['Cable', 'TV', 'Projector'])).optional(),
-    //price: z.number().min(0).optional(),
+    equipment: z.array(z.enum(['Cable', 'TV', 'Projector'])).optional(),    
 });
 
 /**

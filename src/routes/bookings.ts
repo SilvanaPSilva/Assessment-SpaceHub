@@ -18,6 +18,3 @@ router.delete('/:id', bookingsController.deleteBooking);
 export default router; 
 
 
-//import { HubsController } from '../controllers/hubs';   
-//import { createHubsZSchema } from '../models/hubs';
-//import { updateHubsZSchema } from '../models/hubs';
